@@ -1,4 +1,9 @@
-## Assignment 4
+## Python Instapy
+A Python package - Instapy
+
+Contains modules with functions to apply filters to images.
+
+The package contains different modules for different implementations; numpy, numba and plain Python.
 
 ### Required dependencies and packages
 
@@ -19,9 +24,7 @@ pip install numpy, pytest
 
 #### Package info
 
-Subpackage "all_implementations" contains all functions implemented for task 4.1 and 4.2 (with display and runtime functionality), and contains a folder "profiling", which contains reports for these.
-
-Subpackage "filters" contains modules and functions implemented for task 4.3 - 4.5.
+Subpackage "filters" contains modules and functions implemented for grayscale filter and sepia filter, utilizing numpy for image array arithmetics.
 
 #### Install
 Install instapy using:
