@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+import argparse
+from enum import Enum
+from instapy import Grayscale
+from instapy import Sepia
+
+class Implement(Enum):
+    numpy = "numpy"
+    numba = "numba"
+    python = "python"
+
+    def __str__(self):
+        return self.value
+
+def restricted_float(x):
+    x = float(x)
+    if x < 0.0 or x > 1.0:
+        raise argparse.ArgumentTypeError(f'{x} not in range [0.0, 1.0]')
+    return x
+
+parser = argparse.ArgumentParser(description="Apply either sepia or grayscale filter onto your image using an implementation of your choice.")
+group_filter = parser.add_mutually_exclusive_group(required=True)
+parser.add_argument("-f", "--file", help="The filename of file to apply filter to. Required.", required=True)
+group_filter.add_argument("-se", "--sepia", action="store_true", help="Select sepia filter.")
+group_filter.add_argument("-g", "--gray", action="store_true", help="Select grayscale filter.")
+parser.add_argument("-ef", "--effect", type=restricted_float, help="Sepia effect to apply. 0-1. Defaults to 1.", default=1)
+parser.add_argument("-sc", "--scale", type=restricted_float, help="Scale factor to resize image. 0-1. Defaults to 1.", default=1)
+parser.add_argument("-i", "--implement", type=Implement, choices=list(Implement), help="Choose the implementation", default=Implement.numpy)
+parser.add_argument("-d", "--display", action="store_true", help="Display original and filtered image after execution.")
+parser.add_argument("-o", "--out", help="The output filename.")
+args = parser.parse_args()
+
+if args.sepia:
+    filter = Sepia()
+    i = filter.sepia_image(args.file, str(args.implement), args.effect, args.out)
+    if args.display:
+        filter.display_images()
+else:
+    filter = Grayscale()
+    i = filter.grayscale_image(args.file, str(args.implement), args.out)
+    if args.display:
+        filter.display_images()

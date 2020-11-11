@@ -1,0 +1,7 @@
+Image: rain.jpg
+Dimensions: [H, W, C] = [400, 600, 3]
+
+Timing: numpy_color2sepia
+Average runtime running numpy_color2sepia after 3 runs: 0.027033 seconds
+Average runtime running of numpy_color2sepia is 221 times faster than python_color2sepia
+Timing performed using: time.time()

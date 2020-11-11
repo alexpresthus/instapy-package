@@ -1,0 +1,13 @@
+Image: rain.jpg
+Dimensions: [H, W, C] = [400, 600, 3]
+
+Timing: numba_color2gray
+Average runtime running numba_color2gray after 3 runs: 0.504885 seconds
+Average runtime running of numba_color2gray is 4.2 times faster than python_color2gray
+Average runtime running of numba_color2gray is 100 times slower than numpy_color2gray
+Timing performed using: time.time()
+
+Comments on Numba vs NumPy
+Numba is used for optimizing general Python-code, compiling it just-in-time.
+NumPy utilized vectorized calls, and can be more specifically optimized for array iteration.
+While Numba proves effective in optimizing pure Python-code, speeding up the performance 4 times, it doesn't come close to the performance of NumPy.

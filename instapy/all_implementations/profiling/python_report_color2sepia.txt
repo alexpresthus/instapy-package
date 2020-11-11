@@ -1,0 +1,6 @@
+Image: rain.jpg
+Dimensions: [H, W, C] = [400, 600, 3]
+
+Timing: python_color2sepia
+Average runtime running python_color2sepia after 3 runs: 5.987992 seconds
+Timing performed using: time.time()
